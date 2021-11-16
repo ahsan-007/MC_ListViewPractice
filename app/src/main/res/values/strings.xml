@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MC_ListView</string>
+    <string name="default_list_view">Default List View</string>
 </resources>

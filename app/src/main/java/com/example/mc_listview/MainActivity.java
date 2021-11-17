@@ -11,6 +11,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button defaultLayoutBtn;
     Button customListView;
+    Button seekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,19 +22,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         customListView=findViewById(R.id.customListView);
         customListView.setOnClickListener(this);
+
+        seekBar=findViewById(R.id.seekBarBtn);
+        seekBar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent=null;
         switch (v.getId()){
             case R.id.defaultListViewBtn:
-                Intent intent = new Intent(MainActivity.this,DefaultListView.class);
-                startActivity(intent);
+                intent = new Intent(MainActivity.this,DefaultListView.class);
                 break;
             case R.id.customListView:
-                Intent intent1 = new Intent(MainActivity.this,CustomListView.class);
-                startActivity(intent1);
+                intent = new Intent(MainActivity.this,CustomListView.class);
+                break;
+            case R.id.seekBarBtn:
+                intent = new Intent(MainActivity.this,SeekBarPrac.class);
                 break;
         }
+        startActivity(intent);
     }
 }

@@ -9,10 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class DefaultListView extends AppCompatActivity implements View.OnClickListener {
+public class DefaultListView extends AppCompatActivity {
 
     EditText friendName;
     Button addName;
@@ -36,15 +37,20 @@ public class DefaultListView extends AppCompatActivity implements View.OnClickLi
         friendListView.setAdapter(arrayAdapter);
 
         addName=findViewById(R.id.addName);
-        addName.setOnClickListener(this);
-    }
+        addName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String name = friendName.getText().toString();
+                String message = "Please Enter a Name";
+                if(!name.equals("")){
+                    friendNames.add(name);
+                    arrayAdapter.notifyDataSetChanged();
+                    friendName.setText("");
+                    message="Name Added";
+                }
+                Toast.makeText(DefaultListView.this,message,Toast.LENGTH_SHORT).show();
+            }
+        });
 
-    @Override
-    public void onClick(View v) {
-        String name = friendName.getText().toString();
-        if(!name.equals("")){
-            friendNames.add(name);
-            arrayAdapter.notifyDataSetChanged();
-        }
     }
 }

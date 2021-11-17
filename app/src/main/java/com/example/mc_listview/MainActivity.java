@@ -10,19 +10,17 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button defaultLayoutBtn;
-
+    Button customListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         defaultLayoutBtn = findViewById(R.id.defaultListViewBtn);
-        if(defaultLayoutBtn==null){
-            Log.d("Status===============","Null");
-        }else{
-            Log.d("Status===============","Not Null");
-        }
         defaultLayoutBtn.setOnClickListener(this);
+
+        customListView=findViewById(R.id.customListView);
+        customListView.setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.defaultListViewBtn:
                 Intent intent = new Intent(MainActivity.this,DefaultListView.class);
                 startActivity(intent);
+                break;
+            case R.id.customListView:
+                Intent intent1 = new Intent(MainActivity.this,CustomListView.class);
+                startActivity(intent1);
+                break;
         }
     }
 }
